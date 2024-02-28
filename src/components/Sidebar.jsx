@@ -1,11 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Stack } from "@mui/material";
 
 import { categories } from "../utils/constants";
 
-const selectedCategory = "New";
-
-const Sidebar = () => (
+const Sidebar = ({ selectedCategory, setSelectedCategory }) => (
   <Stack
     direction="row"
     sx={{
@@ -21,6 +20,7 @@ const Sidebar = () => (
           color: "white",
         }}
         className="category-btn"
+        onClick={() => setSelectedCategory(category.name)}
         key={category.name}
       >
         <span
@@ -40,5 +40,10 @@ const Sidebar = () => (
     ))}
   </Stack>
 );
+
+Sidebar.propTypes = {
+  selectedCategory: PropTypes.string.isRequired,
+  setSelectedCategory: PropTypes.func.isRequired,
+};
 
 export default Sidebar;
